@@ -4,7 +4,7 @@ title: createRoot
 
 <Intro>
 
-`createRoot` le permite crear una raíz para mostrar componentes de React dentro de un nodo DOM del navegador.
+`createRoot` te permite crear una raíz para mostrar componentes de React dentro de un nodo del DOM del navegador.
 
 ```js
 const root = createRoot(domNode, options?)
@@ -18,9 +18,9 @@ const root = createRoot(domNode, options?)
 
 ## Uso {/_usage_/}
 
-### Mostrar una aplicación construida completamente con React {/_rendering-an-app-fully-built-with-react_/}
+### Renderizar una app construida completamente con React {/_rendering-an-app-fully-built-with-react_/}
 
-Si su aplicación está construida completamente con React, crear una raíz única para su aplicación entera.
+Si tu app está construida completamente con React, crea una raíz única para tu app entera.
 
 ```js [[1, 3, "document.getElementById('root')"], [2, 4, "<App />"]]
 import { createRoot } from "react-dom/client";
@@ -29,23 +29,19 @@ const root = createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
 
-Usualmente, solo necesitará ejecutar este código una vez, al inicio. Y…:
+Usualmente, solo necesitarás ejecutar este código una vez al inicio. Este código:
 
-1. Encontrará el <CodeStep step={1}>nodo DOM del navegador</CodeStep> definido en su HTML.
-
-2. Mostrar el <CodeStep step={2}>componente de React</CodeStep> para su aplicación.
+1. Encontrará el <CodeStep step={1}>nodo del DOM del navegador</CodeStep> definido en tu HTML.
+2. Mostrará el <CodeStep step={2}>componente de React</CodeStep> para tu app.
 
 <Sandpack>
 
 ```html index.html
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My app</title>
-  </head>
+  <head><title>My app</title></head>
   <body>
-    <!-- This is the DOM node -->
-    <!-- Este es el nodo DOM -->
+    <!-- Este es el nodo del DOM -->
     <div id="root"></div>
   </body>
 </html>
@@ -84,38 +80,35 @@ function Counter() {
 
 </Sandpack>
  
-**Si su aplicación está construida completamente con React, no debería necesitar crear más raíces, o llamar [`root.render`](#root-render) otra vez.**
+**Si tu app está construida completamente con React, no deberías necesitar crear más raíces, o llamar a [`root.render`](#root-render) otra vez.**
 
-A partir de este punto, React administrará el DOM de su aplicación entera. Para agregar más componentes, [anídelos dentro de los componente de la `App`.](/learn/importing-and-exporting-components) Cuando necesite actualizar la interfaz del usuario (UI), cada uno de sus componentes puede hacerlo [usando el estado.](/apis/react/useState) Cuando necesite mostrar contenido adicional como un modal o una información sobre herramientas fuera del nodo DOM, [represéntalo con un portal.](/apis/react-dom/createPortal)
+A partir de este punto, React administrará el DOM de tu app entera. Para agregar más componentes, [anídelos dentro del componente de la `App`.](/learn/importing-and-exporting-components) Cuando necesitas actualizar la interfaz del usuario (UI), cada uno de tus componentes puede lograr [por usar el estado.](/apis/react/useState) Cuando necesitas mostrar contenido adicional como un modal o herramientas de ayuda fuera del nodo del DOM, [renderizar con un portal.](/apis/react-dom/createPortal)
 
 <Note>
 
-Cuando su HTML está vacío, el usuario ve una página en blanco hasta que el código de la aplicación Javascript se cargue y ejecute:
+Cuando tu HTML está vacío, el usuario ve una página en blanco hasta que el código de Javascript de la app se cargue y ejecute:
 
 ```html
 <div id="root"></div>
 ```
 
-This can feel very slow! To solve this, you can generate the initial HTML from your components on the server or during the build. Then your visitors can read text, see images, and click links before any of the JavaScript code loads. We recommend to use a framework that does this optimization out of the box. Depending on when it runs, this is called server-side rendering (SSR) or static site generation (SSG).
+¡Esto puede sentirse muy lento! Para resolver esto, puede generar el HTML inicial a partir de tus componentes [en el servidor o durante la compilación.](/apis/react-dom/server) Entonces tus visitantes pueden leer el texto, ver imágenes, y hacer clic en los enlaces antes de que se cargue cualqueria de los códigos de Javascript. Recomendamos [utilizar un framework](/learn/start-a-new-react-project#building-with-a-full-featured-framework) que realice esta optimización de forma inmediata. Dependiendo de cuando se ejecuta, se llama *renderizar de lado del servidor (SSR)* o *generación de sitios estáticos (SSG)*
 
-¡Esto puede sentirse muy lento! Para resolver esto, puede generar el HTML inicial a partir de sus componentes [en el servidor o durante el compilación.](/apis/react-dom/server)
-Entonces sus visitantes pueden leer el texto, ver imágenes, y haga clic en los enlaces antes de que se cargue cualqueria de los códigos Javascript. Recomendamos [utilizar un marco](/learn/start-a-new-react-project#building-with-a-full-featured-framework) que realice esta optimización de forma inmediata. Dependiendo de cuando se ejecuta, se llama _representación del lado del servidor (SSR)_ o _generación de sitios estáticos (SSG)_
 </Note>
 
 <Pitfall>
 
-**Aplicaciónes que utiliza la representación de servidor o la generación estática deben llamar [`hydrateRoot`](/apis/react-dom/client/hydrateRoot) en lugar de `createRoot`.** React luego se _hidratará_ (reutilizar) los nodos DOM de su HTML en lugar de destruirlos y volver a crearlos.
+**Aplicaciónes que utiliza la renderización del servidor o la generación estática deben llamar a [`hydrateRoot`](/apis/react-dom/client/hydrateRoot) en lugar de `createRoot`.** React luego se *hidratará* (reutilizar) los nodos del DOM de tu HTML en lugar de destruirlos y volver a crearlos.
 
 </Pitfall>
 
 ---
 
-### Mostrar una página construida parcialmente con React{/_rendering-a-page-partially-built-with-react_/}
+### Renderizar una página construida parcialmente con React{/_rendering-a-page-partially-built-with-react_/}
 
-Si su página [no está construida completamente con React](/learn/add-react-to-a-website), puedes llamar `createRoot` varias veces para crear una raíz para cada pieza de nivel superior del interfaz de usuario (UI) administrada por React. Puede mostrar contenido diferente en cada raíz llamando [`root.render`.](#root-render)
+Si tu página [no está construida completamente con React](/learn/add-react-to-a-website), puedes llamar a `createRoot` varias veces para crear una raíz para cada pieza de nivel superior del interfaz de usuario (UI) administrada por React. Puede mostrar contenido diferente en cada raíz por llamar a [`root.render`.](#root-render)
 
-Aquí, dos componentes diferentes de React muestran adentro dos nodos de DOM definidos en el
-`index.html` archivo:
+Aquí, dos componentes diferentes de React se renderizan a dos nodos del DOM definidos en el archivo `index.html`:
 
 <Sandpack>
 
