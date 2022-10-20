@@ -195,7 +195,7 @@ Mayormente es útil si tus componentes de React están dentro de una app escrita
 
 ---
 
-### Updating a root component {/*updating-a-root-component*/} <!-- Here>
+### Actualización de un componente raíz {/*updating-a-root-component*/}
 
 Puedes llamar a `render` más de una vez en la misma raíz. Siempre que el árbol de componentes corresponda con lo que se había renderizado anteriormente, React [mantendrá el estado.](/learn/preserving-and-resetting-state) Ten en cuenta que se puede escribir en el input que significa que las actualizaciones por llamar a `render` cada segundo en este ejemplo no son destructivos:
 
@@ -231,7 +231,7 @@ export default function App({counter}) {
 No es común llamar `render` más de una vez. En cambio, se suele [actualizar el estado](/apis/react/useState) dentro de uno de los componentes.
 
 ---
-## Reference {/*reference*/} <!-- Here>
+## Referencia {/*reference*/}
 
 ### `createRoot(domNode, options?)` {/*create-root*/}
 
