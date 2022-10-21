@@ -228,7 +228,7 @@ export default function App({counter}) {
 
 </Sandpack>
 
-No es común llamar `render` más de una vez. En cambio, se suele [actualizar el estado](/apis/react/useState) dentro de uno de los componentes.
+No es común llamar a `render` más de una vez. En cambio, se suele [actualizar el estado](/apis/react/useState) dentro de uno de los componentes.
 
 ---
 ## Referencia {/*reference*/}
@@ -248,14 +248,14 @@ React creará una raíz para el `domNode` y tomará el control sobre manejar el 
 root.render(<App />);
 ```
 
-Una app construida completamente con React suele llamar `createRoot` una vez para su componente de raíz. Una página que utiliza un poco de React para unas partes de la página puede tener tantas raíces como sean necesarias.
+Una app construida completamente con React suele llamar a `createRoot` una vez para su componente de raíz. Una página que utiliza un poco de React para unas partes de la página puede tener tantas raíces como sean necesarias.
 
 [Ver ejemplos hacia arriba.](#usage)
 
 #### Parámetros {/*parameters*/}
 
 
-* `domNode`: Un [elemento del DOM.](https://developer.mozilla.org/en-US/docs/Web/API/Element) React creará una raíz para este elemento del DOM y te permite que puedas llamar funciones en la raíz, como `render` y mostrar el contenido renderizado por React.
+* `domNode`: Un [elemento del DOM.](https://developer.mozilla.org/en-US/docs/Web/API/Element) React creará una raíz para este elemento del DOM y te permite que puedas llamar a funciones en la raíz, como `render` y mostrar el contenido renderizado por React.
 
 * **opcional** `opciones`: Un objeto contiene opciones para esta raíz React.
 
